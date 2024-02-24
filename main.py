@@ -53,9 +53,9 @@ class Framework(BaseHTTPRequestHandler):
 
     def send_static(self, filename, status_code=200):
         self.send_response(status_code)
-        mime_type, *_ = mimetypes.guess_type(filename)
-        if mime_type:
-            self.send_header("Content-Type", mime_type)
+        mt, *_ = mimetypes.guess_type(filename)
+        if mt:
+            self.send_header("Content-Type", mt)
         else:
             self.send_header("Content-Type", "text/plain")
         self.end_headers()
